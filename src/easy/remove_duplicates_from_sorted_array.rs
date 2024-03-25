@@ -1,4 +1,31 @@
-// My silly attempt at my first answer. I don't know what I'm doing and it shows :D
+/*
+ *
+ * Optimal solution
+ * Method: two-pointer
+ *
+ */
+pub fn remove_duplicates(nums: &mut Vec<i32>) -> i32 {
+    // Unique values will be at least 1
+    let mut left = 1;
+
+    // Start at 1 so you can look back at the first pair
+    for right in 1..nums.len() {
+        if nums[right] != nums[right - 1] {
+            nums[left] = nums[right];
+            left += 1;
+        }
+    }
+
+    left as i32
+}
+
+/*
+ *
+ * My own home grown solution, it works fine, it's goofy-ish, my first solution written in Rust so
+ * you can tell I'm still figuring things out. I also got fixated on figuring out matches and
+ * Options a little bit.
+ *
+ */
 pub fn remove_duplicates_my_solution(nums: &mut Vec<i32>) -> i32 {
     let mut results_array: Vec<i32> = Vec::new();
     let mut duplicates: i32 = 0;
@@ -31,22 +58,6 @@ pub fn remove_duplicates_my_solution(nums: &mut Vec<i32>) -> i32 {
     }
 
     unique as i32
-}
-
-// This was not my answer, this was the most optimal answer I saw on LeetCodes Result Screen
-pub fn remove_duplicates(nums: &mut Vec<i32>) -> i32 {
-    // Unique values will be at least 1
-    let mut j = 1;
-
-    // Start at 1 so you can look back at the first pair
-    for i in 1..nums.len() {
-        if nums[i] != nums[i - 1] {
-            nums[j] = nums[i];
-            j += 1;
-        }
-    }
-
-    j as i32
 }
 
 #[cfg(test)]
