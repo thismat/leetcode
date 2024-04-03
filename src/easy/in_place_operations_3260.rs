@@ -6,7 +6,6 @@
 pub fn sort_array_by_parity_my_solution(nums: Vec<i32>) -> Vec<i32> {
     let mut results: Vec<i32> = vec![0; nums.len()];
 
-    // TODO: I can do this instead by subtracting the length with the current index
     for (index, num) in nums.iter().enumerate() {
         if num % 2 == 0 {
             // It is even
@@ -61,6 +60,8 @@ mod tests {
                 );
             }
         }
+
+        println!("Test");
     }
 
     #[test]
