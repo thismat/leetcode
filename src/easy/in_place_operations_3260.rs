@@ -1,6 +1,8 @@
 /**
  *
- * My solution TBD :D
+ * Accepted on: 2024-04-07
+ * O(n) time
+ * O(n) memory
  *
  */
 pub fn sort_array_by_parity_my_solution(nums: Vec<i32>) -> Vec<i32> {

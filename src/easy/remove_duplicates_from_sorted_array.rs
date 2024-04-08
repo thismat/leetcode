@@ -133,9 +133,3 @@ mod tests {
     }
 }
 
-fn run() {
-    let mut input2: Vec<i32> = vec![0, 0, 1, 1, 1, 2, 2, 3, 3, 4];
-
-    let results2 = remove_duplicates(&mut input2);
-}
-
