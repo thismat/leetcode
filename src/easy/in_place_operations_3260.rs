@@ -6,26 +6,22 @@
 pub fn sort_array_by_parity_my_solution(nums: Vec<i32>) -> Vec<i32> {
     let mut results: Vec<i32> = vec![0; nums.len()];
 
-    for (index, num) in nums.iter().enumerate() {
+    let mut even_insert: usize = 0;
+    let mut odd_insert: usize = nums.len() - 1;
+
+    for (_, num) in nums.iter().enumerate() {
         if num % 2 == 0 {
             // It is even
-            results[index] = *num;
+            results[even_insert] = *num;
+            even_insert += 1;
         } else {
             // It is odd
-            results[nums.len() - 1 - index] = *num;
+            results[odd_insert] = *num;
+            odd_insert -= 1;
         }
     }
 
     results
-}
-
-/**
- *
- *  Optimal Solution
- *
- */
-pub fn sort_array_by_parity_optimal(nums: Vec<i32>) -> Vec<i32> {
-    nums
 }
 
 #[cfg(test)]
@@ -39,7 +35,7 @@ mod tests {
         let results: Vec<i32> = sort_array_by_parity_my_solution(input);
 
         for (index, num) in results.iter().enumerate() {
-            if index <= results.len() {
+            if index < results.len() / 2 {
                 assert_eq!(
                     num % 2,
                     0,
@@ -68,7 +64,7 @@ mod tests {
     fn test_2() {
         let input: Vec<i32> = vec![0];
 
-        let results: Vec<i32> = sort_array_by_parity_optimal(input);
+        let results: Vec<i32> = sort_array_by_parity_my_solution(input);
 
         for (index, num) in results.iter().enumerate() {
             if index <= results.len() {
